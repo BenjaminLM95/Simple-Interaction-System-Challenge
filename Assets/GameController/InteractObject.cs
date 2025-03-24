@@ -36,15 +36,7 @@ public class InteractObject : MonoBehaviour
         }       
         isTextDisplayed = false;
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        if (isTextDisplayed) 
-        {
-            
-        }
-    }
+    
 
     public void Interact() 
     {
@@ -79,7 +71,7 @@ public class InteractObject : MonoBehaviour
     public void PickUp() 
     {
         Debug.Log("Picking up object" + gameObject.name);
-       
+        this.gameObject.SetActive(false); 
     }
 
     public void Info()

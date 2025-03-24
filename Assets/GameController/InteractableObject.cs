@@ -1,11 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class InteractableObject : MonoBehaviour
 {
     public GameObject interactableObj = null;
-    
+  
  
     private void Update() 
     {
