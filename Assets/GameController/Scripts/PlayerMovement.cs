@@ -12,26 +12,38 @@ public class PlayerMovement : MonoBehaviour
        
     public GameObject spriteObject;
     public Animator _myAnimator;
+
+    public bool isOnDialogue; 
  
 
     private void Awake()
     {
         moveSpeed = 2.5f;
         playerRigidbody = this.GetComponent<Rigidbody2D>();       
-        Actions.MoveEvent += UpdateMoveVector;      
-        
+        Actions.MoveEvent += UpdateMoveVector;
+        isOnDialogue = false;
 
     }
     // Update is called once per frame
     void FixedUpdate()
     {
+        if(!isOnDialogue)
         HandlePlayerMovement();       
  
     }
 
     private void Update()
     {
-        HandleAnimation();
+        if (!isOnDialogue)
+        {            
+            _myAnimator.speed = 1; 
+
+            HandleAnimation();
+        }
+        else
+        {            
+            _myAnimator.speed = 0;
+        }
 
 
         
@@ -50,12 +62,14 @@ public class PlayerMovement : MonoBehaviour
 
     public void MoveFaster() 
     {        
-       moveSpeed = 8f;          
+       moveSpeed = 8f;
+        _myAnimator.speed = 3;
     }
 
     public void ResumeSpeed() 
     {       
-        moveSpeed = 2.5f;        
+        moveSpeed = 2.5f;
+        _myAnimator.speed = 1;
     }
 
     

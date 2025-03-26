@@ -35,10 +35,10 @@ public class InputManager : MonoBehaviour, GameInput.IPlayerActions
         if (context.performed) 
         {
             Actions.ChangeSprite?.Invoke();
-            Debug.Log("ChangeSprite");
+            //Debug.Log("ChangeSprite");
 
             Actions.GrowCircle?.Invoke();
-            Debug.Log("GrowCircle");
+            //Debug.Log("GrowCircle");
 
             
         }
@@ -52,13 +52,13 @@ public class InputManager : MonoBehaviour, GameInput.IPlayerActions
             if (right)
             {
                 Actions.ChangeSprite?.Invoke();
-                Debug.Log("ChangeSprite");
+                //Debug.Log("ChangeSprite");
                 right = false;
             }
             else
             {
                 Actions.ReturnSprite?.Invoke();
-                Debug.Log("ReturnSprite");
+                //Debug.Log("ReturnSprite");
                 right = true;
             }
         }

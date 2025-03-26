@@ -7,7 +7,7 @@ using UnityEngine;
 
 public class InteractObject : MonoBehaviour
 {
-    public enum InterType 
+    public enum InterType
     {
         Nothing,
         Info,
@@ -15,11 +15,16 @@ public class InteractObject : MonoBehaviour
         Dialogue
     }
 
+    private DialogueManagement dialogueManager; 
+
     [Header("Type of Interaction")]
     public InterType type;
 
     [Header("Info Message")]
-    public string infoMessage; 
+    public string infoMessage;
+
+    [Header("Dialogue")]
+    [TextArea] public string[] sentences; 
 
     public TextMeshProUGUI infoText = null;
 
@@ -35,6 +40,8 @@ public class InteractObject : MonoBehaviour
             infoText = textObject.GetComponent<TextMeshProUGUI>();            
         }       
         isTextDisplayed = false;
+
+        dialogueManager = GetComponent<DialogueManagement>(); 
     }
     
 
@@ -54,6 +61,7 @@ public class InteractObject : MonoBehaviour
                 PickUp();
                 break;
             case "Dialogue":
+                Dialogue();
                 break;
             default:
                 Nothing();
@@ -84,9 +92,8 @@ public class InteractObject : MonoBehaviour
     }
 
     public void Dialogue() 
-    {
-        Debug.Log("Display the dialogue");
-        
+    {       
+        dialogueManager.StartDialogue(sentences);
     }
     
 
