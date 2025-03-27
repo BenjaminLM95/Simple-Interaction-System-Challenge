@@ -15,7 +15,7 @@ public class InteractObject : MonoBehaviour
         Dialogue
     }
 
-    private DialogueManagement dialogueManager; 
+    public DialogueManagement dialogueManager = null ; 
 
     [Header("Type of Interaction")]
     public InterType type;
@@ -41,7 +41,8 @@ public class InteractObject : MonoBehaviour
         }       
         isTextDisplayed = false;
 
-        dialogueManager = GetComponent<DialogueManagement>(); 
+        dialogueManager = GameObject.FindObjectOfType<DialogueManagement>();
+
     }
     
 
